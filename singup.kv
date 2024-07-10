@@ -1,0 +1,174 @@
+MDScreen:
+    name: 'Singup'
+    md_bg_color: 164/255, 219/255, 245/255
+    MDIconButton:
+        icon: 'arrow-left'
+        pos_hint:{'center_x': .12, 'center_y': .85}
+        size_hint: .25, .25
+        
+        theme_text_color: 'Custom'
+        text_color:rgba (4/255, 13/255,4/255)
+        on_release:
+            root.manager.transition.direction = 'right'
+            root.manager.current ='Login'
+    MDLabel:
+        text: 'Welcome!'
+        font_size: '50sp'
+        haling: 'center'
+        pos_hint: {'center_x': .6,'center_y': .7}
+        color: rgba (4/255, 13/255,4/255)
+    MDLabel:
+        text: 'Sing up to continue'
+        font_size: '33sp'
+        haling: 'center'           
+        pos_hint: {'center_x': .6,'center_y': .65}
+        color: rgba (13/255, 38/255,12/255)
+    
+        
+    MDFloatLayout:
+        size_hint: .4, .95
+        pos_hint:{'center_x': .5, 'center_y': .53}
+
+        TextInput:
+            id:userfield
+            hint_text:'username'
+            size_hint_y: .75
+            pos_hint:{'center_x':.6,'center_y':.21}
+            background_color:1,1,1,0
+            foreground_color:rgba(0,0,59,255)
+            cursor_color:rgba(0,0,59,255)
+            font_size: '14sp'
+            cursor_width: '2sp'
+            multiline: False
+            write_tab: False
+            focus: True
+            on_text_validate: emails.focus = True
+
+        MDFloatLayout:
+            pos_hint:{'center_x':.62,'center_y':.54}
+            size_hint_y: .001
+            md_bg_color: rgba(178, 178, 178, 255)
+        
+        TextInput:
+            id:emails
+            hint_text:'Email'
+            size_hint_y: .75
+            pos_hint:{'center_x':.6,'center_y':.17}
+            background_color:1,1,1,0
+            foreground_color:rgba(0,0,59,255)
+            cursor_color:rgba(0,0,59,255)
+            font_size: '14sp'
+            cursor_width: '2sp'
+            multiline: False
+            write_tab: False
+            focus: True
+            on_text_validate: pwds.focus = True
+
+        MDFloatLayout:
+            pos_hint:{'center_x':.62,'center_y':.5}
+            size_hint_y: .001
+            md_bg_color: rgba(178, 178, 178, 255)
+            
+            
+
+            
+        TextInput:
+            id:pwds
+            hint_text:'Password'
+            size_hint_y: .75
+            pos_hint:{'center_x':.6,'center_y':.12}
+            background_color:1,1,1,0
+            foreground_color:rgba(0,0,59,255)
+            cursor_color:rgba(0,0,59,255)
+            font_size: '14sp'
+            cursor_width: '2sp'
+            multiline: False
+            password: True
+            write_tab: False 
+            focus: True
+            on_text_validate: pwdsc.focus = True
+        MDFloatLayout:
+            pos_hint:{'center_x':.62,'center_y':.45}
+            size_hint_y: .001
+            md_bg_color: rgba(178, 178, 178, 255)
+        TextInput:
+            id:pwdsc
+            hint_text:'Confirm Password'
+            size_hint_y: .75
+            pos_hint:{'center_x':.6,'center_y':.07}
+            background_color:1,1,1,0
+            foreground_color:rgba(0,0,59,255)
+            cursor_color:rgba(0,0,59,255)
+            font_size: '14sp'
+            cursor_width: '2sp'
+            multiline: False
+            password: True
+            write_tab: False 
+        MDFloatLayout:
+            pos_hint:{'center_x':.62,'center_y':.4}
+            size_hint_y: .001
+            md_bg_color: rgba(178, 178, 178, 255)
+                  
+        
+    Button:
+        text:'Singup'
+        background_color: 0,0,0,0            
+        size_hint: .55, .045
+        pos_hint: {'center_x': .5, 'center_y': .3}
+        haling: 'center'
+        on_release: app.send_data(userfield,emails, pwds,pwdsc)
+        canvas.before:
+            Color:
+                rgb:rgba(107/255,21/255,84/255)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius: [5]
+    
+    MDLabel:
+        text: 'or'
+        pos_hint: {'center_x': .99, 'center_y': .2}
+    MDFloatLayout:
+        pos_hint:{'center_x':.3,'center_y':.2}
+        size_hint_y: .001
+        md_bg_color: rgba(178, 178, 178, 255)
+        size_hint_x: .35
+    MDFloatLayout:
+        pos_hint:{'center_x':.71,'center_y':.2}
+        size_hint_y: .001
+        md_bg_color: rgba(178, 178, 178, 255)
+        size_hint_x: .35
+    MDLabel:
+        orientation:'vertical'
+        text: 'social media login'
+        pos_hint: {'center_x': .97, 'center_y': .15}
+        color: rgba(68, 78, 132,255)
+    MDGridLayout:
+        cols: 3
+        size_hint: .48, .07
+        pos_hint: {'center_x': .5, 'center_y': .1}
+        Image:
+            source: 'google.png'
+        Image:
+            source: 'instagram.png'
+        Image:
+            source: 'facebook.png'
+    MDLabel:
+        text: "Already have an account"
+        
+        haling: 'center'           
+        pos_hint: {'center_x': .77, 'center_y': .05}
+        color: rgba (13/255, 38/255,12/255)
+    Button:
+        text: "Login"          
+        pos_hint: {'center_x': .79, 'center_y': .05}
+        color: rgba (13/255, 38/255,12/255)
+        background_normal: ''
+        background_color: 164/255, 219/255, 245/255
+        size_hint: .03,.03
+        on_release:
+            root.manager.transition.direction = 'right'
+            root.manager.current ='Login'
+
+   
+  

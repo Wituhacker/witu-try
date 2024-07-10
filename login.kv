@@ -1,0 +1,143 @@
+MDScreen:
+    name: 'Login'
+    md_bg_color: 164/255, 219/255, 245/255
+    MDIconButton:
+        icon: 'arrow-left'
+        pos_hint:{'center_x': .12, 'center_y': .85}
+        size_hint: .25, .25
+        
+        theme_text_color: 'Custom'
+        text_color:rgba (4/255, 13/255,4/255)
+        on_release:
+            root.manager.transition.direction = 'right'
+            root.manager.current ='main'
+    MDLabel:
+        text: 'Welcome!'
+        font_size: '50sp'
+        haling: 'center'
+        pos_hint: {'center_x': .6,'center_y': .7}
+        color: rgba (4/255, 13/255,4/255)
+    MDLabel:
+        text: 'Sing in to continue'
+        font_size: '33sp'
+        haling: 'center'           
+        pos_hint: {'center_x': .6,'center_y': .65}
+        color: rgba (13/255, 38/255,12/255)
+    
+        
+    MDFloatLayout:
+        size_hint: .4, .95
+        pos_hint:{'center_x': .5, 'center_y': .53}
+        
+        TextInput:
+            id: email
+            hint_text:'Email'
+            size_hint_y: .75
+            pos_hint:{'center_x':.6,'center_y':.2}
+            background_color:1,1,1,0
+            foreground_color:rgba(0,0,59,255)
+            cursor_color:rgba(0,0,59,255)
+            font_size: '14sp'
+            cursor_width: '2sp'
+            multiline: False
+            write_tab: False
+            focus: True
+            on_text_validate: pwd.focus = True
+
+        MDFloatLayout:
+            pos_hint:{'center_x':.62,'center_y':.53}
+            size_hint_y: .001
+            md_bg_color: rgba(178, 178, 178, 255)
+            
+            
+
+            
+        TextInput:
+            id: pwd
+            hint_text:'Password'
+            size_hint_y: .75
+            pos_hint:{'center_x':.6,'center_y':.15}
+            background_color:1,1,1,0
+            foreground_color:rgba(0,0,59,255)
+            cursor_color:rgba(0,0,59,255)
+            font_size: '14sp'
+            cursor_width: '2sp'
+            multiline: False
+            password: True
+            write_tab: False 
+            on_text_validate: root.validate_email()
+        MDFloatLayout:
+            pos_hint:{'center_x':.62,'center_y':.48}
+            size_hint_y: .001
+            md_bg_color: rgba(178, 178, 178, 255)
+                  
+        
+    Button:
+        text:'Login'
+        background_color: 0,0,0,0            
+        size_hint: .55, .045
+        pos_hint: {'center_x': .5, 'center_y': .3}
+        haling: 'center'
+        on_release: app.data_receive(email, pwd)
+        canvas.before:
+            Color:
+                rgb:rgba(107/255,21/255,84/255)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius: [5]
+        
+    Button:
+        text: 'Forgot password?'
+        pos_hint: {'center_x': .5, 'center_y': .25}
+        color: rgba(68, 78, 132,255)
+        font_size: '12sp'
+        size_hint: .3, .01
+        background_normal: ''
+        background_color: 164/255, 219/255, 245/255
+        text_color: 0,0,0,255
+    MDLabel:
+        text: 'or'
+        pos_hint: {'center_x': .99, 'center_y': .2}
+    MDFloatLayout:
+        pos_hint:{'center_x':.3,'center_y':.2}
+        size_hint_y: .001
+        md_bg_color: rgba(178, 178, 178, 255)
+        size_hint_x: .35
+    MDFloatLayout:
+        pos_hint:{'center_x':.71,'center_y':.2}
+        size_hint_y: .001
+        md_bg_color: rgba(178, 178, 178, 255)
+        size_hint_x: .35
+    MDLabel:
+        orientation:'vertical'
+        text: 'social media login'
+        pos_hint: {'center_x': .97, 'center_y': .15}
+        color: rgba(68, 78, 132,255)
+    MDGridLayout:
+        cols: 3
+        size_hint: .48, .07
+        pos_hint: {'center_x': .5, 'center_y': .1}
+        Image:
+            source: 'google.png'
+        Image:
+            source: 'instagram.png'
+        Image:
+            source: 'facebook.png'
+    MDLabel:
+        text: "Don't have an account"
+        
+        haling: 'center'           
+        pos_hint: {'center_x': .77, 'center_y': .05}
+        color: rgba (13/255, 38/255,12/255)
+    Button:
+        text: "Singup"          
+        pos_hint: {'center_x': .79, 'center_y': .05}
+        color: rgba (13/255, 38/255,12/255)
+        background_normal: ''
+        background_color: 164/255, 219/255, 245/255
+        size_hint: .03,.03
+        on_release:
+            root.manager.transition.direction = 'right'
+            root.manager.current ='Singup'
+

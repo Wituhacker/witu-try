@@ -1,0 +1,59 @@
+MDScreen:
+    name:'main'
+    orientation: 'vertical'
+    spacing: 10
+    MDFloatLayout:
+        md_bg_color: 164/255, 219/255, 245/255
+        Image:
+            source:'light.png'
+            pos_hint:{'center_x': .12, 'center_y': .85}
+            size_hint: .25, .25
+        Image:
+            source:'business.png'
+            pos_hint:{'center_x': .5, 'center_y': .6}
+            size_hint: .8, .8
+
+        Label:
+            text: 'Welcome'
+            font_size: '23sp'
+            haling: 'center'
+            pos_hint: {'center_y': .5}
+            color: rgba (4/255, 13/255,4/255)
+        Label:
+            text: 'This is business platform which can simplfy your business management '
+            font_size: '13sp'
+            haling: 'center'
+            pos_hint: {'center_x': .5,'center_y': .48}
+            color: rgba (13/255, 38/255,12/255)
+        Button:
+            text:'Login'
+            background_color: 0,0,0,0            
+            size_hint: .55, .045
+            pos_hint: {'center_x': .5, 'center_y': .3}
+            haling: 'center'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'Login'
+            canvas.before:
+                Color:
+                    rgb:rgba(107/255,21/255,84/255)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [5]
+        Button:
+            text:'Singup'
+            background_color: 0,0,0,0 
+            color: rgba (4/255, 13/255,4/255)         
+            size_hint: .55, .045
+            pos_hint: {'center_x': .5, 'center_y': .2}
+            haling:'center'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'Singup'
+            canvas.before:
+                Color:
+                    rgb:rgba(107/255,21/255,84/255)
+                Line:
+                    width:1.2
+                    rounded_rectangle: self.x , self.y, self.width, self.height, 5,5,5,5, 100
